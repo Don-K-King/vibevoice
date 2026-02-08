@@ -36,7 +36,7 @@ Nutze die bereitgestellte Datei `docker-compose.evido.yml` im Repo-Root.
 | Variable | Default | Zweck |
 |----------|---------|------|
 | `VIBEVOICE_IMAGE` | `vibevoice:latest` | Container-Image |
-> **Hinweis:** Das Image `vibevoice:latest` muss entweder lokal gebaut oder über eine Registry verfügbar sein.
+> **Hinweis:** Der Compose-Stack enthält eine `build`-Sektion und baut das Image bei Bedarf lokal (Tag: `VIBEVOICE_IMAGE`). Wenn du ausschließlich ein Registry-Image nutzen willst, stelle sicher, dass das Image vorliegt und nutze `docker compose -f docker-compose.evido.yml pull` oder entferne die `build`-Sektion in einer eigenen Override-Datei.
 
 ---
 
@@ -54,7 +54,7 @@ Falls das Netzwerk bereits existiert, kannst du den Schritt überspringen.
 
 ### Schritt 2: Image bereitstellen
 
-**Option A (lokal bauen):**
+**Option A (lokal bauen, z. B. vorab):**
 ```bash
 docker build -t vibevoice:latest .
 ```
@@ -62,6 +62,9 @@ docker build -t vibevoice:latest .
 **Option B (Registry-Image nutzen):**
 ```bash
 export VIBEVOICE_IMAGE=registry.example.com/vibevoice:latest
+```
+```bash
+docker compose -f docker-compose.evido.yml pull
 ```
 
 ### Schritt 3: Container starten

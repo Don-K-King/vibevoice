@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  vibevoice:
+    image: ${VIBEVOICE_IMAGE:-vibevoice:latest}
+    container_name: vibevoice
+    ports:
+      - "127.0.0.1:${VIBEVOICE_PORT:-8001}:8000"
+    networks:
+      - evido-internal
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./model_cache:/root/.cache/huggingface
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: -1
+    shm_size: "16gb"
+
+networks:
+  evido-internal:
+    external: true

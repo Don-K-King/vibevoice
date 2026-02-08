@@ -725,6 +725,7 @@ The FastAPI wrapper code in this repository is provided as-is for educational an
 - [VibeVoice GitHub Repository](https://github.com/microsoft/VibeVoice)
 - [VibeVoice-ASR on HuggingFace](https://huggingface.co/microsoft/VibeVoice-ASR)
 - [Official VibeVoice Documentation](https://github.com/microsoft/VibeVoice/blob/main/docs/vibevoice-asr.md)
+- [Evido Docker Integration Guide](docs/EVIDO_DOCKER_SETUP.md)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [NVIDIA Container Toolkit Documentation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
 

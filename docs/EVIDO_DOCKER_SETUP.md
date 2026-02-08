@@ -36,8 +36,6 @@ Nutze die bereitgestellte Datei `docker-compose.evido.yml` im Repo-Root.
 | Variable | Default | Zweck |
 |----------|---------|------|
 | `VIBEVOICE_IMAGE` | `vibevoice:latest` | Container-Image |
-| `VIBEVOICE_PORT` | `8001` | Host-Port (lokal, gebunden an 127.0.0.1) |
-
 > **Hinweis:** Das Image `vibevoice:latest` muss entweder lokal gebaut oder über eine Registry verfügbar sein.
 
 ---
@@ -46,10 +44,10 @@ Nutze die bereitgestellte Datei `docker-compose.evido.yml` im Repo-Root.
 
 ### Schritt 1: Evido-Netzwerk bereitstellen
 
-Der Container wird in ein **externes** Netzwerk eingebunden (Name: `evido-internal`):
+Der Container wird in ein **externes** Netzwerk eingebunden (Name: `evido-live-translate`):
 
 ```bash
-docker network create evido-internal
+docker network create evido-live-translate
 ```
 
 Falls das Netzwerk bereits existiert, kannst du den Schritt überspringen.

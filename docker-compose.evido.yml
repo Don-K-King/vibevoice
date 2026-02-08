@@ -5,9 +5,9 @@ services:
     image: ${VIBEVOICE_IMAGE:-vibevoice:latest}
     container_name: vibevoice
     ports:
-      - "127.0.0.1:${VIBEVOICE_PORT:-8001}:8000"
+      - "127.0.0.1:8001:8000"
     networks:
-      - evido-internal
+      - evido-live-translate
     deploy:
       resources:
         reservations:
@@ -33,5 +33,5 @@ services:
     shm_size: "16gb"
 
 networks:
-  evido-internal:
+  evido-live-translate:
     external: true
